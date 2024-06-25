@@ -1,6 +1,5 @@
 // import { NextApiRequest, NextApiResponse } from 'next';
 
-import {} from 'next'
 const ThermalPrinter = require('node-thermal-printer').printer;
 const PrinterTypes = require('node-thermal-printer').types;
 
@@ -14,7 +13,7 @@ if(!printer){
     console.log("Printer Conneted");
 }
 
-export default async (req, res ) => {
+const handler =  async (req, res ) => {
     console.log("api called",req.body)
   if (req.method !== 'POST') {
     return res.status(405).json({ message: 'Method not allowed' });
@@ -57,3 +56,5 @@ export default async (req, res ) => {
     res.status(500).json({ message: `Error: ${error}` });
   }
 };
+
+export default handler
